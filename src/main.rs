@@ -26,10 +26,35 @@ fn test_struct() {
     println!("user1.username = {}", user1.username);
 }
 
+fn analyze_slice(slice: &[i32]) {   // Borrowed slice
+    println!("First element of the slice: {}", slice[0]);
+    println!("The slice has {} elements", slice.len());
+}
+
+fn testing_slices() {
+    println!("---- Testing slices ----");
+    let xs: [i32; 5] = [1, 2, 3, 4, 5];
+    analyze_slice(&xs[1 .. 3]);
+
+    // Arrays can be safely accessed using `.get`, which returns an
+    // `Option`. This can be matched as shown below, or used with
+    // `.expect()` if you would like the program to exit with a nice
+    // message instead of happily continue.
+    for i in 0..xs.len() + 1 { // Oops, one element too far!
+        match xs.get(i) {
+            Some(xval) => println!("{}: {}", i, xval),
+            None => println!("Slow down! {} is too far!", i),
+        }
+    }
+}
+
 fn main() {
     println!("Hello!");
     let ret: String = test_tuple();
     println!("ret = {}", ret);
 
     test_struct();
+    println!("1 << 5 is {}", 1u32 << 5);
+
+    testing_slices();
 }
