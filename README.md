@@ -11,5 +11,8 @@ touch README.md
 code .
 ```
 
-Checkade in till github direkt från vscode.
+Publish to github direkt från vscode.
 
+## Test tuple
+
+Funktionen testar tuples med värden av olika typ. Funktionen returnerar en string genom att utelämna semikolon på sista raden.
