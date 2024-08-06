@@ -71,4 +71,9 @@ for i in 0..xs.len() + 1 { // Oops, one element too far!
 }
 ```
 
+## Error handling
+
+Kör detta från terminalen
+`RUST_BACKTRACE=1 cargo run`
+
 

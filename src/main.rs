@@ -1,3 +1,5 @@
+use std::fs::File;
+use std::io::Error;
 
 struct User {
     active: bool,
@@ -62,6 +64,16 @@ fn drink(beverage: &str) {
     println!("Some refreshing {} is all I need.", beverage);
 }
 
+fn test_failed_file_open() {
+    let f = File::open("hello.txt");
+    /*
+    let mut f = match f {
+        Ok(file) => file,
+        Err(e) => return Err(e),
+    };
+    */
+}
+
 fn main() {
     println!("Hello!");
     let ret: String = test_tuple();
@@ -72,10 +84,12 @@ fn main() {
 
     testing_slices();
 
-    let test_panic = true;
+    let test_panic = false;
     drink("water");
     if test_panic {
         drink("lemonade"); // This will panic    
     }
     drink("beer");
+
+    test_failed_file_open();
 }
