@@ -55,6 +55,13 @@ impl User {
     }
 }
 
+fn drink(beverage: &str) {
+    // You shouldn't drink too much sugary beverages.
+    if beverage == "lemonade" { panic!("AAAaaaaa!!!!"); }
+
+    println!("Some refreshing {} is all I need.", beverage);
+}
+
 fn main() {
     println!("Hello!");
     let ret: String = test_tuple();
@@ -64,4 +71,11 @@ fn main() {
     println!("1 << 5 is {}", 1u32 << 5);
 
     testing_slices();
+
+    let test_panic = true;
+    drink("water");
+    if test_panic {
+        drink("lemonade"); // This will panic    
+    }
+    drink("beer");
 }

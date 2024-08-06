@@ -1,4 +1,4 @@
-# Rustlab
+# Rustlabb
 
 Labbar med Rust.
 
@@ -15,6 +15,8 @@ Publish to github direkt från vscode.
 
 ## Studiemedel
 
+- Snabb genomgång i [denna video](https://www.youtube.com/watch?v=br3GIIQeefY).
+    - Se även [denna](https://www.youtube.com/watch?v=Z3xPIYHKSoI) från samma snubbe.
 - Läser från [rust boken](https://doc.rust-lang.org/book/title-page.html). 
 - Kolla också in [rust by example](https://doc.rust-lang.org/rust-by-example/index.html).
 
@@ -68,3 +70,5 @@ for i in 0..xs.len() + 1 { // Oops, one element too far!
     }
 }
 ```
+
+
