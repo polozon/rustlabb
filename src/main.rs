@@ -19,11 +19,12 @@ fn test_tuple() -> String {
 fn test_struct() {
     let user1 = User {
         active: true,
-        username: String::from("user1"),
+        username: String::from("Peter"),
         email: String::from("nobody@none.com"),
         sign_in_count: 1,
     };
     println!("user1.username = {}", user1.username);
+    println!("is user Peter = {}", user1.is_user("Peter"));
 }
 
 fn analyze_slice(slice: &[i32]) {   // Borrowed slice
@@ -45,6 +46,12 @@ fn testing_slices() {
             Some(xval) => println!("{}: {}", i, xval),
             None => println!("Slow down! {} is too far!", i),
         }
+    }
+}
+
+impl User {
+    fn is_user(self, username: &str) -> bool {
+        self.username == username
     }
 }
 

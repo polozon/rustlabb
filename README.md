@@ -13,7 +13,11 @@ code .
 
 Publish to github direkt från vscode.
 
-> Läser från [rust boken](https://doc.rust-lang.org/book/title-page.html)
+## Studiemedel
+
+- Läser från [rust boken](https://doc.rust-lang.org/book/title-page.html). 
+- Kolla också in [rust by example](https://doc.rust-lang.org/rust-by-example/index.html).
+
 
 ## Test tuple
 
@@ -32,7 +36,17 @@ Man behöver inte använda return.
 
 ## Structs
 
-[structs](https://doc.rust-lang.org/book/ch05-01-defining-structs.html?highlight=struct#defining-and-instantiating-structs)
+[structs](https://doc.rust-lang.org/book/ch05-01-defining-structs.html?highlight=struct#defining-and-instantiating-structs) är det närmsta man kommer klasser. En metod läggs också till structen så här:
+
+```rust
+impl User {
+    fn is_user(self, username: &str) -> bool {
+        self.username == username
+    }
+}
+```
+
+Det fungerar trots att impl kommer senare i koden.
 
 ## Slices
 
