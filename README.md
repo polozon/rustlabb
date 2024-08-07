@@ -76,4 +76,8 @@ for i in 0..xs.len() + 1 { // Oops, one element too far!
 Kör detta från terminalen
 `RUST_BACKTRACE=1 cargo run`
 
+## Guessing game
 
+La in kod från [rust boken](https://doc.rust-lang.org/book/ch02-00-guessing-game-tutorial.html). Här demonstreras bland annat hur man lägger till en extern modul och hur enum Ordering används.
+
+Det som är lite oroande är att applikationen kraschar och avslöjar massor av info när man matar in ett icke-nummer.
