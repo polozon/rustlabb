@@ -100,9 +100,33 @@ fn test_failed_file_open() {
     */
 }
 
-fn main() {
-    guessing_game();
+fn loop_count() -> i32 {
+    let mut counter = 0;
 
+    let result = loop {
+        counter += 1;
+
+        if counter == 10 {
+            break counter * 2
+        }
+    };  // The semicolon ends the statement
+    println!("The result is {}", result);
+    result
+}
+
+fn main() {
+    //guessing_game();
+
+    let pol: i32 = loop_count();
+    println!("The result returned is {pol}");
+
+    let test1 : i32 = loop {
+        if true {
+            break 3; // ()
+        }
+    };
+    println!("test1 = {}", test1);
+ 
     println!("\nHello!");
     let ret: String = test_tuple();
     println!("ret = {}", ret);

@@ -87,3 +87,15 @@ let guess: u32 = match guess.trim().parse() {
     Err(_) => 0,
 };
 ```
+
+## Semikolon efter break
+
+Labbar med statement och expressions, det verkar inte spela någon roll om man har ett semikolon efter break expression, oklart varför, se [forum fråga](https://stackoverflow.com/questions/65024479/why-does-break-not-need-a-semicolon-when-ending-a-loop). Break verkar vara lite som return som inte heller behöver ett semikolon på slutet.
+
+```rust
+let _: i32 = loop {
+    if true {
+        break 3; // Semicolon or not, doesn't seem to matter
+    }
+};
+```
