@@ -1,23 +1,18 @@
 use std::fs::File;
 use std::io::Error;
 use rand::Rng;
-use std::cmp::Ordering;
+//use std::cmp::Ordering;
 use std::io;
 
 struct User {
     active: bool,
     username: String,
-    email: String,
-    sign_in_count: u64,
 }
 
 fn guessing_game() {
     println!("Guess the number!");
-
     let secret_number = rand::thread_rng().gen_range(1..=100);
-
     println!("The secret number is: {secret_number}");
-
     println!("Please input your guess.");
 
     let mut guess = String::new();
@@ -26,7 +21,10 @@ fn guessing_game() {
         .read_line(&mut guess)
         .expect("Failed to read line");
 
-    let guess: u32 = guess.trim().parse().expect("Please type a number!");
+    let guess: u32 = match guess.trim().parse() {
+        Ok(pol) => pol, // pol could be any name
+        Err(_) => 0,
+    };
 
     println!("You guessed: {guess}");
 
@@ -34,7 +32,7 @@ fn guessing_game() {
         std::cmp::Ordering::Less => println!("Too small!"),
         std::cmp::Ordering::Greater => println!("Too big!"),
         std::cmp::Ordering::Equal => println!("You win!"),
-    }
+    };
 }
 
 fn test_tuple() -> String {
@@ -51,10 +49,9 @@ fn test_struct() {
     let user1 = User {
         active: true,
         username: String::from("Peter"),
-        email: String::from("nobody@none.com"),
-        sign_in_count: 1,
     };
     println!("user1.username = {}", user1.username);
+    println!("user1.active = {}", user1.active);
     println!("is user Peter = {}", user1.is_user("Peter"));
 }
 
@@ -74,7 +71,7 @@ fn testing_slices() {
     // message instead of happily continue.
     for i in 0..xs.len() + 1 { // Oops, one element too far!
         match xs.get(i) {
-            Some(xval) => println!("{}: {}", i, xval),
+            Some(xv) => println!("{}: {}", i, xv),
             None => println!("Slow down! {} is too far!", i),
         }
     }
@@ -94,7 +91,7 @@ fn drink(beverage: &str) {
 }
 
 fn test_failed_file_open() {
-    let f = File::open("hello.txt");
+    let _f: Result<File, Error> = File::open("hello.txt");
     /*
     let mut f = match f {
         Ok(file) => file,

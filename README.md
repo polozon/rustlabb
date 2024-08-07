@@ -1,6 +1,13 @@
 # Rustlabb
 
-Labbar med Rust.
+Labb för att lära mig [Rust](https://www.rust-lang.org/).
+
+## Studiemedel
+
+- Snabb genomgång i [denna video](https://www.youtube.com/watch?v=br3GIIQeefY).
+    - Se även [denna](https://www.youtube.com/watch?v=Z3xPIYHKSoI) från samma snubbe.
+- Läser från [rust boken](https://doc.rust-lang.org/book/title-page.html). 
+- Kolla också in [rust by example](https://doc.rust-lang.org/rust-by-example/index.html).
 
 ## Skapade projektet
 
@@ -12,14 +19,6 @@ code .
 ```
 
 Publish to github direkt från vscode.
-
-## Studiemedel
-
-- Snabb genomgång i [denna video](https://www.youtube.com/watch?v=br3GIIQeefY).
-    - Se även [denna](https://www.youtube.com/watch?v=Z3xPIYHKSoI) från samma snubbe.
-- Läser från [rust boken](https://doc.rust-lang.org/book/title-page.html). 
-- Kolla också in [rust by example](https://doc.rust-lang.org/rust-by-example/index.html).
-
 
 ## Test tuple
 
@@ -80,4 +79,11 @@ Kör detta från terminalen
 
 La in kod från [rust boken](https://doc.rust-lang.org/book/ch02-00-guessing-game-tutorial.html). Här demonstreras bland annat hur man lägger till en extern modul och hur enum Ordering används.
 
-Det som är lite oroande är att applikationen kraschar och avslöjar massor av info när man matar in ett icke-nummer.
+Men applikationen kraschar och avslöjar massor av info när man matar in ett icke-nummer, det fixas [här](https://doc.rust-lang.org/book/ch02-00-guessing-game-tutorial.html#handling-invalid-input). Om man skriver icke-nummer blir det 0.
+
+```rust
+let guess: u32 = match guess.trim().parse() {
+    Ok(num) => num,
+    Err(_) => 0,
+};
+```
