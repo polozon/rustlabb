@@ -1,6 +1,6 @@
 # Rustlabb
 
-Labb för att lära mig [Rust](https://www.rust-lang.org/).
+Ett labbprojekt för [Rust](https://www.rust-lang.org/).
 
 ## Studiemedel
 
@@ -8,6 +8,7 @@ Labb för att lära mig [Rust](https://www.rust-lang.org/).
     - Se även [denna](https://www.youtube.com/watch?v=Z3xPIYHKSoI) från samma snubbe.
 - Läser från [rust boken](https://doc.rust-lang.org/book/title-page.html). 
 - Kolla också in [rust by example](https://doc.rust-lang.org/rust-by-example/index.html).
+- [unwrap och expect](https://www.jacksondawkins.com/blog/unwrap-and-expect-in-rust)
 
 ## Skapade projektet
 
@@ -19,6 +20,8 @@ code .
 ```
 
 Publish to github direkt från vscode.
+
+Kör applikation med: `cargo run`.
 
 ## Test tuple
 
@@ -153,3 +156,12 @@ enum IpAddr {
 let home = IpAddr::V4(String::from("127.0.0.1"));
 println!("{:?}", home);
 ```
+
+## Felhantering
+
+[Bra info om unwrap och expect](https://www.jacksondawkins.com/blog/unwrap-and-expect-in-rust). 
+
+- Vill man manuellt hantera errors, använd Option eller Result.
+- Option returnerar Some eller None.
+- Result returnerar Ok eller Error
+- Vill man panikstoppa app, använd unwarp eller expect.
