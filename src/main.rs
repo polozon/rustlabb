@@ -170,6 +170,26 @@ fn test_enum() {
     println!("{:?}", loopback);
 }
 
+fn get_status(username: &str) -> Option<&str> {
+    // some user lookup code here...
+    if (username != "peter") {
+        return None;
+    }
+    // if user exists, fetch their status and return that...
+    Some("found_status")
+}
+  
+fn test_option() {
+    println!("Testing Option error handling");
+    // now let's use that function
+    let result = get_status("peter");
+    match result {
+        Some(status) => println!("{}", status),
+        None => println!("couldn't find a status for peter"),
+    }
+}
+
+
 fn main() {
     //guessing_game();
     let pol: i32 = loop_count();
@@ -204,4 +224,6 @@ fn main() {
     test_ownership();
     test_slice();
     test_enum();
+    test_option();
+
 }

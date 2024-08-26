@@ -10,6 +10,11 @@ Ett labbprojekt för [Rust](https://www.rust-lang.org/).
 - Kolla också in [rust by example](https://doc.rust-lang.org/rust-by-example/index.html).
 - [unwrap och expect](https://www.jacksondawkins.com/blog/unwrap-and-expect-in-rust)
 
+## Installation av rust
+
+Installerade med [rustup](https://www.rust-lang.org/tools/install), vid build uppstod dock detta fel `error: linker "cc" not found`.
+Löste sig med `sudo apt install build-essential`.
+
 ## Skapade projektet
 
 ```bash
@@ -22,6 +27,9 @@ code .
 Publish to github direkt från vscode.
 
 Kör applikation med: `cargo run`.
+
+
+
 
 ## Test tuple
 
