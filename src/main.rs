@@ -4,6 +4,12 @@ use rand::Rng;
 //use std::cmp::Ordering;
 use std::io;
 
+#[derive(Debug)]
+enum IpAddr {
+    V4(String),
+    V6(String),
+}
+
 struct User {
     active: bool,
     username: String,
@@ -114,9 +120,58 @@ fn loop_count() -> i32 {
     result
 }
 
+fn for_loop() {
+    let a = [10, 20, 30, 40, 50];
+
+    for element in a {
+        println!("the value is: {element}");
+    }
+    for number in (1..4).rev() {
+        print!("{number}! ");
+    }
+    println!("");
+}
+
+fn creates_string() -> String {
+    let some_string = String::from("yours");
+    some_string
+}
+
+// This function takes a String and returns one
+fn takes_and_gives_back(a_string: String) -> String {
+    a_string  // a_string is returned and moves out to the calling function
+}
+
+fn test_ownership() {
+    let s1 = String::from("hello1");
+    let s2 = s1;
+    //println!("{s1}"); // This will not work
+    println!("{s2}");
+
+    let s1 = creates_string();
+    let s2 = String::from("hello2");
+    let s3 = takes_and_gives_back(s2);
+    println!("{s1}, {s3}");
+}
+
+fn test_slice() {
+    let s = String::from("hello world!");
+    let hello = &s[0..5];
+    let world = &s[6..];
+    println!("{hello} - {world}");
+}
+
+fn test_enum() {
+    let home = IpAddr::V4(String::from("127.0.0.1"));
+
+    let loopback = IpAddr::V6(String::from("::1"));
+
+    println!("{:?}", home);
+    println!("{:?}", loopback);
+}
+
 fn main() {
     //guessing_game();
-
     let pol: i32 = loop_count();
     println!("The result returned is {pol}");
 
@@ -144,4 +199,9 @@ fn main() {
     drink("beer");
 
     test_failed_file_open();
+
+    for_loop();
+    test_ownership();
+    test_slice();
+    test_enum();
 }

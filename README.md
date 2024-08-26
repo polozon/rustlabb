@@ -99,3 +99,57 @@ let _: i32 = loop {
     }
 };
 ```
+
+## Loop labels
+
+Man kan göra en break från en yttre loop med loop labels, se [detta avsnitt](https://doc.rust-lang.org/book/ch03-05-control-flow.html#loop-labels-to-disambiguate-between-multiple-loops). Här används tick symbiolen som också används för lifetimes.
+
+## Ownership
+
+Läs [detta kapitel](https://doc.rust-lang.org/book/ch04-01-what-is-ownership.html).
+
+- Each value in Rust has an owner.
+- There can only be one owner at a time.
+- When the owner goes out of scope, the value will be dropped.
+
+> Rust takes a different path: the memory is automatically returned once the variable that owns it goes out of scope.
+
+En konstant sträng är en string literal (unmutable), inte att förväxla med String som använder heapminnet och är mutable. Om man kopierar en sträng till en annan variabel så blir den första variabeln ogiltig, detta för att undvika double free error på heap.
+
+```rust
+let s1 = String::from("hello");
+let s2 = s1;
+println!("{s1}, world!");   // WILL FAIL !
+```
+
+En funktion kan skapa och returnera en sträng så här:
+
+```rust
+fn creates_string() -> String {
+    let some_string = String::from("yours");
+    some_string
+}
+```
+
+Den anropande koden sparar normalt sett den skapande strängen och tar över ägandet. Se funktionen `test_ownership`.
+
+> Assigning a value to another variable moves it. When a variable that includes data on the heap goes out of scope, the value will be cleaned up by drop unless ownership of the data has been moved to another variable
+
+För att inte behöva kopiera tillbaka varibler används referenser. Se [References and Borrowing](https://doc.rust-lang.org/book/ch04-02-references-and-borrowing.html). Funktionen lånar strängen och kan inte ändra den innan den lämnas tillbaka, om man inte gör det till en mutable reference.
+
+> A slice is a kind of reference, so it does not have ownership
+
+## Enums
+
+Man kan lägga in värden i enums vilket är lite coolt, dev debug trait kan man printa ut värdet.
+
+```rust
+#[derive(Debug)]
+enum IpAddr {
+    V4(String),
+    V6(String),
+}
+
+let home = IpAddr::V4(String::from("127.0.0.1"));
+println!("{:?}", home);
+```
