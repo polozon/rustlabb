@@ -173,3 +173,7 @@ println!("{:?}", home);
 - Option returnerar Some eller None.
 - Result returnerar Ok eller Error
 - Vill man panikstoppa app, använd unwarp eller expect.
+
+Funktionen test_option anropas två gånger, i det andra anropet används unwrap. Om inte applikationen crashar här skrivs värdet 42 ut eftersom det finns i Some. unwrap och expect gör en panic om None eller Err returneras från en funktion.
+
+> Både unwrap och expect kan hantera Båda kan hantera Option eller Result.
